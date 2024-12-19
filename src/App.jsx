@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import search from "./assets/icons/search.svg";
 import "./App.css";
 import { useStateContext } from "./Context"; // Ensure this file exists
-import BackgroundLayout from "./Components/BackgroundLayout"; // Correct path to the component
+import BackgroundLayout from "./Components/BackgroundLayout.jsx"; // Correct path to the component
 
 export default function App() {
   const [input, setInput] = useState("");
@@ -38,6 +38,6 @@ export default function App() {
         </div>
       </nav>
       <BackgroundLayout />
-    </div> {/* This div is now properly closed */}
-  )
+    </div> 
+  );
 }
