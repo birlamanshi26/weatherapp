@@ -71,3 +71,18 @@ nav h1 {
   outline: none;
   border-color: #007bff; /* Blue border on focus */
 }
+/* Ensure the background image covers the screen without scrolling */
+img.h-screen {
+  object-fit: cover; /* Ensures the image fills the screen without stretching */
+  height: 100vh; /* Sets the height of the image to the full viewport height */
+  width: 100vw; /* Sets the width of the image to the full viewport width */
+  position: fixed; /* Fixes the image in place */
+  top: 0;
+  left: 0;
+  z-index: -1; /* Ensures it appears behind the content */
+}
+
+/* Ensure the navbar appears on top of the background */
+nav {
+  z-index: 10; /* Positions the navbar above the background */
+}

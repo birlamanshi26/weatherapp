@@ -30,9 +30,10 @@ const BackgroundLayout = () => {
     <img
       src={image}
       alt="weather background"
-      className="h-screen w-full fixed left-0 top-0 -z-10"
+      className="h-screen w-full fixed left-0 top-0 object-cover -z-10"
     />
   );
+  
 };
 
 export default BackgroundLayout;

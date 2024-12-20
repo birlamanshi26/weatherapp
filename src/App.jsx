@@ -3,11 +3,13 @@ import search from "./assets/icons/search.svg";
 import "./App.css";
 import { useStateContext } from "./Context"; // Ensure this file exists
 import BackgroundLayout from "./Components/BackgroundLayout.jsx"; // Correct path to the component
+import WeatherCard from "./Components/WeatherCard.jsx";
+import MiniCard from "./Components/MiniCard.jsx";
 
 export default function App() {
   const [input, setInput] = useState("");
-  const { place, setPlace } = useStateContext();
-
+  const { weather, thisLocation, values, place, setPlace } = useStateContext()
+  // console.log(weather)
   const submitCity = () => {
     console.log("Searching for city:", input);
     setPlace(input);
@@ -26,6 +28,7 @@ export default function App() {
             className="absolute top-1/2 left-3 transform -translate-y-1/2 cursor-pointer w-5 h-5"
             onClick={submitCity}
           />
+         
           {/* Input field */}
           <input
             type="text"
@@ -38,6 +41,31 @@ export default function App() {
         </div>
       </nav>
       <BackgroundLayout />
+      <main className="w-full flex flex-wrap gap-8 py-8 px-[10%] items-center justify-center">
+      <WeatherCard
+          place={thisLocation}
+          windspeed={weather.windspeedd}
+          humidity={weather.humidity}
+          temperature={weather.temp}
+          heatIndex={weather.heatindex}
+          iconString={weather.conditions}
+          conditions={weather.conditions}
+        />
+        <div className="flex justify-center gap-8 flex-wrap w-[60%]">
+  {values?.slice(1, 7).length ? (
+    values.slice(1, 7).map((curr) => (
+      <MiniCard
+        key={curr.datetime}
+        time={curr.datetime}
+        temp={curr.temp}
+        iconString={curr.conditions}
+      />
+    ))
+  ) : (
+    <p>No data available</p>
+  )}
+</div>
+      </main>
     </div> 
   );
 }
